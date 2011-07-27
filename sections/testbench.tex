@@ -1,0 +1,28 @@
+\section{Testbench}
+\subsection{Eigenschaften}
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+  \item Zu prüfende Komponente wird unverändert aus Bibliothek übernommen.
+  (Component).
+  \item Testbench muss verschiedene Architekturen einfach einbinden können.
+  \item Innerhalb der Architektur der Testbench dürfen auch nicht
+  synthetisierbare VHDL Konstrukte verwendet werden. (z.B.: for-Schleife)
+  \item Simulationszeit = Reale Zeit $\neq$ Rechenzeit der Simulation.
+  \item Normalerweise 3 Prozesse (clock, stimuli, response).
+\end{itemize}
+\subsection{Timing Simulation}
+  \subsubsection{Delta Time}
+    Wird Verzögerungszeit einer Operation nicht explizit angegeben, so wird mit
+    $ \Delta $ time gerechnet (meistens 0).
+  \subsubsection{Inertial}
+    Signalzuweisung mit after:\\
+    \lstinputlisting[language=VHDL,tabsize=2]{code/inertial_delay.vhdl}
+    Y ändert Wert nur, wenn \"Anderung des Eingangs länger wirksam ist als
+    delay ist. Spikes werden nicht berücksichtigt.
+  \subsubsection{Transport}
+    Ausgang wird in jedem Fall um delay gegenüber Eingang verschoben.
+    \lstinputlisting[language=VHDL,tabsize=2]{code/transport_delay.vhdl}
+\subsection{Codebeispiel}
+  \lstinputlisting[language=VHDL,tabsize=2]{code/testbench.vhdl}

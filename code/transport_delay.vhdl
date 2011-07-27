@@ -1,0 +1,1 @@
+Y <= transport A or B after 9 ns;
