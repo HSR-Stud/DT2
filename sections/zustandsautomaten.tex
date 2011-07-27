@@ -1,0 +1,64 @@
+\section{Endliche Zustandsautomaten, Finite State Machine}
+\subsection{Grundlegende Eigenschaften}
+Eine FMS ist ein Geschlossenes Modell mit einer endlichen Anzahl von Zuständen,
+Zustandsübergängen und Aktionen.\\
+\textbf{Sinn:} Mathematische Abstraktion, Grundlage theoretischer
+Betrachtungen, Ausgangspunkt systematischer parktischer Realisierung.\\
+\textbf{Anweundungen:} Informatik (Parser, Compiler, Game)\\
+Technik, digitale Schaltungen (Kaffee-Automat, Parkticket, \ldots)\\
+Kommunikationstechnik (Protokolldesign)\\
+  \subsubsection{Grundstruktur}
+  \begin{multicols}{3}
+    \includegraphics[width=0.2\textwidth]{pics/fsm_grundlage}
+    \textbf{Kombinatorische Logik F/G}\\
+    Generiert Ausgänge\\ und Folgezustand.\\
+    F = Funktion für Ausgänge\\
+    G = Funktion für Speicheransteuerung\\
+    \textbf{Zustandsregister Z}\\
+    Z = Zustansspeicher/register\\
+    Sequentieller Teil des Systems,\\
+    speichert aktuellen Zustand.\\
+    \textbf{Signale}\\
+    x = Eingangsvektor\\
+    m = Anzahl Eingänge\\
+    y = Ausgangsvektor\\
+    n = Anzahl Ausgänge\\
+    s = Zustandsvektor\\
+    d = Folgezustand\\
+    \textbf{Memory}\\
+    k = Anzahl Speicherstellen\\
+    
+  \end{multicols}
+  %Bild V4F7
+\subsection{Mealy, Moore und Medwedjew}
+\begin{tabular}{|p{6cm}|p{6cm}|p{6cm}|}
+  \hline
+  \textbf{Mealy-System} & \textbf{Moore-System} & \textbf{Medwedjew-System} \\
+  \hline
+  Grundsystem; komb. Logik F/G in zwei separate Blöcke aufgeteilt & Wert der
+  primären Ausgänge ist nur vom aktuellen Zustand des Systems abhängig. &
+  Spezialfall des Moore-Systems: Primäre Ausgänge entsprechen dem Zustandsvektor \\
+  \hline
+  \includegraphics[width=0.3\textwidth]{pics/fsm_mealy} &
+  \includegraphics[width=0.3\textwidth]{pics/fsm_moore} &
+  \includegraphics[width=0.3\textwidth]{pics/fsm_medwedjew} \\
+  \hline
+  Ausgänge hängen vom momentanen Zustand und den aktuellen Eingängen ab.
+  & Ausgänge hängen nur vom momentanen Zustand ab und ändern mit der
+  Clock-Flanke & Die primären Ausgänge entsprechen dem Zustandsvektor.
+  Ausgangsfunktion F degeneriert auf 1. \\
+  \hline
+  $ y[i] = F(x[i],x[i]) $ & $ y[i] = F(s[i]) $ & $ y[i] = s[i] := G(x[i-1],y[i-1]) $ \\
+  $ d[i] = s[i+1] := G(x[i],s[i]) $ & $ d[i]=s[i+1] := G(x[i],s[i]) $ & $ 
+  s[i+1]:=G(x[i],s[i])$ \\
+  \hline
+  Entwurf mit asynchronem Output. Ausgabe unabhängig vom Clock. & Allgemeiner Prototyp eines synchronen, sequentiellen Entwurfes. & Ausgänge
+  entsprechen den Zuständen.\\
+  \hline
+  Lange Signalpfade! & Verzögerung Latenzzeit & Zustände müssen gleich codiert
+  werden wie Ausgangssignale\\
+  \hline
+  Mausefalle & & Die meisten Counter \\
+  \hline
+  %Code zu einzelnen Varianten hinzufügen V4 ab seite 21
+\end{tabular}
