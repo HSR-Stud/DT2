@@ -79,6 +79,19 @@ Kommunikationstechnik (Protokolldesign)\\
   \textbf{G: NextStateLogic}\\
   \lstinputlisting[language=VHDL,tabsize=2]{code/fsm_g.vhdl}
   
+\subsection{Synthese von Hand}  
+Anhand der folgenden Regeln lässt sich ein sequentielles System systematisch von Hand synthetisieren.
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+  \item Zustandsdiagramm aufstellen
+  \item Zustandskodierung zuweisen
+  \item Zustandstabelle nach festen Regeln aufstellen
+  \item Speicheransteuer-Funktionen bestimmen
+  \item Ausgangsfunktionen bestimmen
+\end{enumerate}
+
 \subsection{Taktfrequenz}
   Die maximale Taktfrequenz wird durch den längsten Pfad zwischen zwei D-FF
   bestimmt. In kaskadierten Systemen kann die zeitliche Situation lokal
@@ -88,6 +101,9 @@ Kommunikationstechnik (Protokolldesign)\\
   längsten Pfad, dadurch wird $f_{clkMax} $ grösser, gleichzeitig aber $T_{tot} $ (Latency) grösser.
   \subsubsection{Bestimmung des kritischen Pfades}
     \begin{enumerate}
+      \setlength{\itemsep}{1pt}
+      \setlength{\parskip}{0pt}
+      \setlength{\parsep}{0pt}
       \item Die Eingänge der Schaltung mit 0 beschriften.
       \item Für alle Gatter, deren Eingänge beschriftet sind den ausgang des
       Gatters mit $ max\{Eingänge\}+t_p $ beschriften.
@@ -114,6 +130,7 @@ Kommunikationstechnik (Protokolldesign)\\
   (unsichere Methode).\\
   \textbf{Ursachenbehandlung} Elimination des Effektes durch redundante Blöcke.
   
-  
+  %Synthese: Sie können die Logikfunktionen und Komponenten bestimmen, welche
+  %zur Realisierung von Zustandsautomaten benötigt werden.
   
 
