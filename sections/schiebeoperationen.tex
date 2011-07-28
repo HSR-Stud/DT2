@@ -1,0 +1,75 @@
+\section{Schiebeoperationen}
+\subsection{Logische Schiebeoperatoren SLL, SRL}
+	\begin{multicols}{2}
+		\begin{itemize}
+			\setlength{\itemsep}{1pt}
+			\setlength{\parskip}{0pt}
+			\setlength{\parsep}{0pt}
+			
+			\item Bits werden um eine Stelle geschoben.
+			\item Freiwerdende Stelld wird mit Initalwert des des Basistyps aufgefüllt:
+			=0.
+			\item Aus dem Indexbereich hinausgeschobener Inhalt geht verloren.
+		\end{itemize}
+		\begin{center}
+			\includegraphics[width=.4\textwidth]{pics/logic_shift}
+		\end{center}
+	\end{multicols}
+	
+	\begin{multicols}{2}	
+		\begin{lstlisting}[language=vhdl,tabsize=2]
+			signal MEM: bit_vector (4 DOWNTO 0);
+			MEM <= MEM sll 1;
+		\end{lstlisting}
+		
+		\textbf{Anwendung:} Muliplikation / Divison mit $2^n$
+	\end{multicols}
+	
+\subsection{Arithmetische Schiebeoperatoren SLA, SRA}
+	\begin{multicols}{2}
+		\begin{itemize}
+			\setlength{\itemsep}{1pt}
+			\setlength{\parskip}{0pt}
+			\setlength{\parsep}{0pt}
+			
+			\item Bits werden um eine Stelle geschoben.
+			\item Freiwerdende Stelle wird mit letztem geschobenem Bit aufgefüllt.
+			\item Aus dem Indexbereich hinausgeschobener Inhalt geht verloren.
+		\end{itemize}
+		\begin{center}
+			\includegraphics[width=.4\textwidth]{pics/arith_shift}
+		\end{center}
+	\end{multicols}
+	
+	\begin{multicols}{2}	
+		\begin{lstlisting}[language=vhdl,tabsize=2]
+			IMP <= sla 1;
+		\end{lstlisting}
+		
+		\textbf{Anwendung:} Division mit $2^n$ bei sing-magnitude Darstellung (SRA).
+	\end{multicols}
+
+\subsection{Rotierende Schiebeoperatoren SLA, SRA}
+	\begin{multicols}{2}
+		\begin{itemize}
+			\setlength{\itemsep}{1pt}
+			\setlength{\parskip}{0pt}
+			\setlength{\parsep}{0pt}
+			
+			\item Bits werden um eine Stelle geschoben.
+			\item Freiwerdende Stelle wird mit vorderstem Bit der Kette aufgefüllt.
+			\item Aus dem Indexbereich hinausgeschobener Inhalt wird hinten angehängt.
+		\end{itemize}
+		\begin{center}
+			\includegraphics[width=.4\textwidth]{pics/rol_shift}
+		\end{center}
+	\end{multicols}
+	
+	\begin{multicols}{2}	
+		\begin{lstlisting}[language=vhdl,tabsize=2]
+			IMP <= rol 1;
+		\end{lstlisting}
+		
+		\textbf{Anwendung:} Bitweise Analyse.
+	\end{multicols}
+		
