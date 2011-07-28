@@ -52,13 +52,68 @@ Kommunikationstechnik (Protokolldesign)\\
   $ d[i] = s[i+1] := G(x[i],s[i]) $ & $ d[i]=s[i+1] := G(x[i],s[i]) $ & $ 
   s[i+1]:=G(x[i],s[i])$ \\
   \hline
-  Entwurf mit asynchronem Output. Ausgabe unabhängig vom Clock. & Allgemeiner Prototyp eines synchronen, sequentiellen Entwurfes. & Ausgänge
-  entsprechen den Zuständen.\\
+  Die Ausgabe ändert unabhängig vom Clock. Sequentielle Komposition erzeutgt
+  lange Signalpfade. Dadurch kann es zu Races und Hazards kommen. Längste Pfade
+  sind invers proportional zu erzielbaren Taktfrequenzen. & Allgemeiner
+  Prototyp eines synchronen, sequentiellen Entwurfes. Verzögerung Latenzzeit
+  (das berechnete Ergebnis wird erst im nächsten Takt weitergegeben). Dadurch
+  sind Signallaufzeiten viel besser kontrollierbar. & Ausgänge
+  entsprechen den Zuständen. Zustände müssen gleich codiert werden wie
+  Ausgangssignale.\\
   \hline
-  Lange Signalpfade! & Verzögerung Latenzzeit & Zustände müssen gleich codiert
-  werden wie Ausgangssignale\\
-  \hline
+  
   Mausefalle & & Die meisten Counter \\
   \hline
-  %Code zu einzelnen Varianten hinzufügen V4 ab seite 21
+  \lstinputlisting[language=VHDL,tabsize=2]{code/fsm_mealy.vhdl} &
+  \lstinputlisting[language=VHDL,tabsize=2]{code/fsm_moore.vhdl} &
+  \lstinputlisting[language=VHDL,tabsize=2]{code/fsm_medwedjew.vhdl} \\
+  \hline
 \end{tabular}
+
+\subsection{Code Umsetzung der einzelnen Blöcke}
+  \begin{tabular}{p{9cm} p{9cm}}
+    \textbf{F: OutputLogic} & \textbf{Z: RegisterLogic}\\
+    \lstinputlisting[language=VHDL,tabsize=2]{code/fsm_f.vhdl} & 
+    \lstinputlisting[language=VHDL,tabsize=2]{code/fsm_z.vhdl} \\  
+  \end{tabular}
+  \textbf{G: NextStateLogic}\\
+  \lstinputlisting[language=VHDL,tabsize=2]{code/fsm_g.vhdl}
+  
+\subsection{Taktfrequenz}
+  Die maximale Taktfrequenz wird durch den längsten Pfad zwischen zwei D-FF
+  bestimmt. In kaskadierten Systemen kann die zeitliche Situation lokal
+  betrachtet werden.\\
+  Maximale Taktfrequenz: $f_{clkMax}=\frac{1}{t_{längster Pfad}}$\\
+  \textbf{Pipelining} Durch das Einfügen von zusätzlichen FF verkürzt man den
+  längsten Pfad, dadurch wird $f_{clkMax} $ grösser, gleichzeitig aber $T_{tot} $ (Latency) grösser.
+  \subsubsection{Bestimmung des kritischen Pfades}
+    \begin{enumerate}
+      \item Die Eingänge der Schaltung mit 0 beschriften.
+      \item Für alle Gatter, deren Eingänge beschriftet sind den ausgang des
+      Gatters mit $ max\{Eingänge\}+t_p $ beschriften.
+      \item Sind noch unbeschriftete Ausgangsleitungen vorhanden, dann nochmals
+      2 Durchführen.
+      \item Die Länge des längsten Pfades ist $max\{Ausgänge\}$
+    \end{enumerate}
+  \subsubsection{Längster Pfad in Mealy}
+    
+  \subsubsection{Längster Pfad in Moore}
+    Propagation Delay der FF + Längster Pfad von F und G + Setup der FF
+   
+\subsection{Vermeidung von Hazards}
+  Hazards sind kurzzeitige Falschaussagen in logischen Schaltungen. Sie treten
+  auf durch unterschiedliche Signallaufzeiten in den einzelnen Gattern und wegen
+  unterschiedlicher Anzahl Gatter in Signalwegen. Sie führen zu timing
+  Problemen, können fatale Folgen haben und sind ein Problem beim
+  Stromverbrauch.\\
+  \textbf{Statischer Hazard} Ausgang sollte nicht ändern, ändert aber
+  kurzzeitig.\\
+  \textbf{Dynamischer Hazard} Ausgang ändert mehrmals bis er stabil wird.\\
+  \textbf{Symptombehandlung} Nachgeschaltete Flip-Flops, die die Ausgänge
+  Synchronisieren (sichere Methode) oder ausgleich der Verzögerungszeiten
+  (unsichere Methode).\\
+  \textbf{Ursachenbehandlung} Elimination des Effektes durch redundante Blöcke.
+  
+  
+  
+
