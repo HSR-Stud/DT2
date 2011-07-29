@@ -62,7 +62,7 @@ Kommunikationstechnik (Protokolldesign)\\
   Ausgangssignale.\\
   \hline
   
-  Mausefalle & & Die meisten Counter \\
+  Mausefalle & Menüstrukur & Die meisten Counter \\
   \hline
   \lstinputlisting[language=VHDL,tabsize=2]{code/fsm_mealy.vhdl} &
   \lstinputlisting[language=VHDL,tabsize=2]{code/fsm_moore.vhdl} &
@@ -72,12 +72,17 @@ Kommunikationstechnik (Protokolldesign)\\
 
 \subsection{Code Umsetzung der einzelnen Blöcke}
   \begin{tabular}{p{9cm} p{9cm}}
-    \textbf{F: OutputLogic} & \textbf{Z: RegisterLogic}\\
+  
+  
+    \textbf{F: OutputLogic}\\ & \textbf{Z: RegisterLogic}\\
+    
     \lstinputlisting[language=VHDL,tabsize=2]{code/fsm_f.vhdl} & 
+    %\textbf{Z: RegisterLogic}\\
     \lstinputlisting[language=VHDL,tabsize=2]{code/fsm_z.vhdl} \\  
   \end{tabular}
   \textbf{G: NextStateLogic}\\
   \lstinputlisting[language=VHDL,tabsize=2]{code/fsm_g.vhdl}
+  
   
 \subsection{Synthese von Hand}  
 Anhand der folgenden Regeln lässt sich ein sequentielles System systematisch von Hand synthetisieren.
@@ -85,13 +90,13 @@ Anhand der folgenden Regeln lässt sich ein sequentielles System systematisch von
   \setlength{\itemsep}{1pt}
   \setlength{\parskip}{0pt}
   \setlength{\parsep}{0pt}
-  \item Zustandsdiagramm aufstellen
-  \item Zustandskodierung zuweisen
-  \item Zustandstabelle nach festen Regeln aufstellen
-  \item Speicheransteuer-Funktionen bestimmen
+  \item Zustandsdiagramm aufstellen (siehe \ref{statediagramm})
+  \item Zustandskodierung zuweisen (siehe \ref{zustandcodes})
+  \item Zustandstabelle nach festen Regeln aufstellen (siehe
+  \ref{zustandstabelle})
+  \item Speicheransteuer-Funktionen bestimmen 
   \item Ausgangsfunktionen bestimmen
 \end{enumerate}
-
 \subsection{Taktfrequenz}
   Die maximale Taktfrequenz wird durch den längsten Pfad zwischen zwei D-FF
   bestimmt. In kaskadierten Systemen kann die zeitliche Situation lokal
@@ -106,11 +111,12 @@ Anhand der folgenden Regeln lässt sich ein sequentielles System systematisch von
       \setlength{\parsep}{0pt}
       \item Die Eingänge der Schaltung mit 0 beschriften.
       \item Für alle Gatter, deren Eingänge beschriftet sind den ausgang des
-      Gatters mit $ max\{Eingänge\}+t_p $ beschriften.
+      Gatters mit $ max\{Eing\"ange\}+t_p $ (Propagation delay) beschriften.
       \item Sind noch unbeschriftete Ausgangsleitungen vorhanden, dann nochmals
       2 Durchführen.
-      \item Die Länge des längsten Pfades ist $max\{Ausgänge\}$
+      \item Die Länge des längsten Pfades ist $max\{Ausg\"ange\}$
     \end{enumerate}
+    
   \subsubsection{Längster Pfad in Mealy}
     
   \subsubsection{Längster Pfad in Moore}

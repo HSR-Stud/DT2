@@ -1,7 +1,9 @@
 G: process(INP, PRESENT_State)
 begin
-	NEXT_State <= ST_RESET; -- Default Folgezustand
-	case PRESENT_State  is	  -- Folgezustand berechnen
+  -- Default Folgezustand
+	NEXT_State <= ST_RESET;
+	-- Folgezustand berechnen
+	case PRESENT_State  is	  
 		when  ST_1 =>  	
 			if (Bedingung 1 als Fkt. der Eingänge)
 				then  NEXT_State <= ST_x1;
