@@ -3,7 +3,7 @@
 Eine FMS ist ein Geschlossenes Modell mit einer endlichen Anzahl von Zuständen,
 Zustandsübergängen und Aktionen.\\
 \textbf{Sinn:} Mathematische Abstraktion, Grundlage theoretischer
-Betrachtungen, Ausgangspunkt systematischer parktischer Realisierung.\\
+Betrachtungen, Ausgangspunkt systematischer praktischer Realisierung.\\
 \textbf{Anweundungen:} Informatik (Parser, Compiler, Game)\\
 Technik, digitale Schaltungen (Kaffee-Automat, Parkticket, \ldots)\\
 Kommunikationstechnik (Protokolldesign)\\
@@ -45,14 +45,14 @@ Kommunikationstechnik (Protokolldesign)\\
   \hline
   Ausgänge hängen vom momentanen Zustand und den aktuellen Eingängen ab.
   & Ausgänge hängen nur vom momentanen Zustand ab und ändern mit der
-  Clock-Flanke & Die primären Ausgänge entsprechen dem Zustandsvektor.
+  Clock-Flanke. & Die primären Ausgänge entsprechen dem Zustandsvektor.
   Ausgangsfunktion F degeneriert auf 1. \\
   \hline
   $ y[i] = F(x[i],x[i]) $ & $ y[i] = F(s[i]) $ & $ y[i] = s[i] := G(x[i-1],y[i-1]) $ \\
   $ d[i] = s[i+1] := G(x[i],s[i]) $ & $ d[i]=s[i+1] := G(x[i],s[i]) $ & $ 
   s[i+1]:=G(x[i],s[i])$ \\
   \hline
-  Die Ausgabe ändert unabhängig vom Clock. Sequentielle Komposition erzeutgt
+  Die Ausgabe ändert unabhängig vom Clock. Sequentielle Komposition erzeugt
   lange Signalpfade. Dadurch kann es zu Races und Hazards kommen. Längste Pfade
   sind invers proportional zu erzielbaren Taktfrequenzen. & Allgemeiner
   Prototyp eines synchronen, sequentiellen Entwurfes. Verzögerung Latenzzeit
@@ -71,16 +71,15 @@ Kommunikationstechnik (Protokolldesign)\\
 \end{tabular}
 
 \subsection{Code Umsetzung der einzelnen Blöcke}
-  \begin{tabular}{p{9cm} p{9cm}}
+  \begin{multicols}{2}
   
   
-    \textbf{F: OutputLogic}\\ & \textbf{Z: RegisterLogic}\\
-    
-    \lstinputlisting[language=VHDL,tabsize=2]{code/fsm_f.vhdl} & 
-    %\textbf{Z: RegisterLogic}\\
-    \lstinputlisting[language=VHDL,tabsize=2]{code/fsm_z.vhdl} \\  
-  \end{tabular}
-  \textbf{G: NextStateLogic}\\
+    \subsubsection{F: OutputLogic}
+    	\lstinputlisting[language=VHDL,tabsize=2]{code/fsm_f.vhdl}
+    \subsubsection{Z: RegisterLogic}
+    	\lstinputlisting[language=VHDL,tabsize=2]{code/fsm_z.vhdl}
+  \end{multicols}
+  \subsubsection{G: NextStateLogic}
   \lstinputlisting[language=VHDL,tabsize=2]{code/fsm_g.vhdl}
   
   
@@ -103,15 +102,16 @@ Anhand der folgenden Regeln lässt sich ein sequentielles System systematisch von
   betrachtet werden.\\
   Maximale Taktfrequenz: $f_{clkMax}=\frac{1}{t_{längster Pfad}}$\\
   \textbf{Pipelining} Durch das Einfügen von zusätzlichen FF verkürzt man den
-  längsten Pfad, dadurch wird $f_{clkMax} $ grösser, gleichzeitig aber $T_{tot} $ (Latency) grösser.
+  längsten Pfad, dadurch wird $f_{clkMax} $ grösser, gleichzeitig wird $T_{tot}
+  $ (Latency) grösser.
   \subsubsection{Bestimmung des kritischen Pfades}
     \begin{enumerate}
       \setlength{\itemsep}{1pt}
       \setlength{\parskip}{0pt}
       \setlength{\parsep}{0pt}
       \item Die Eingänge der Schaltung mit 0 beschriften.
-      \item Für alle Gatter, deren Eingänge beschriftet sind den ausgang des
-      Gatters mit $ max\{Eing"ange\}+t_p $ (Propagation delay) beschriften.
+      \item Für alle Gatter, deren Eingänge beschriftet sind den Ausgang des
+      Gatters mit $ max\{Eing\"ange\}+t_p $ (Propagation delay) beschriften.
       \item Sind noch unbeschriftete Ausgangsleitungen vorhanden, dann nochmals
       2 Durchführen.
       \item Die Länge des längsten Pfades ist $max\{Ausg"ange\}$
@@ -132,7 +132,7 @@ Anhand der folgenden Regeln lässt sich ein sequentielles System systematisch von
   kurzzeitig.\\
   \textbf{Dynamischer Hazard} Ausgang ändert mehrmals bis er stabil wird.\\
   \textbf{Symptombehandlung} Nachgeschaltete Flip-Flops, die die Ausgänge
-  Synchronisieren (sichere Methode) oder ausgleich der Verzögerungszeiten
+  Synchronisieren (sichere Methode) oder Ausgleich der Verzögerungszeiten
   (unsichere Methode).\\
   \textbf{Ursachenbehandlung} Elimination des Effektes durch redundante Blöcke.
   
