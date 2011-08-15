@@ -100,9 +100,9 @@ Anhand der folgenden Regeln lässt sich ein sequentielles System systematisch von
   Die maximale Taktfrequenz wird durch den längsten Pfad zwischen zwei D-FF
   bestimmt. In kaskadierten Systemen kann die zeitliche Situation lokal
   betrachtet werden.\\
-  Maximale Taktfrequenz: $f_{clkMax}=\frac{1}{t_{längster Pfad}}$\\
-  \textbf{Pipelining} Durch das Einfügen von zusätzlichen FF verkürzt man den
-  längsten Pfad, dadurch wird $f_{clkMax} $ grösser, gleichzeitig wird $T_{tot}
+  Maximale Taktfrequenz: $f_{clkMax}=\frac{1}{t_{längster Pfad}}\
+  T>(=)t_{längster Pfad} $\\
+  \textbf{Pipelining} Durch das Einfügen von zusätzlichen FF verkürzt man den längsten Pfad, dadurch wird $f_{clkMax} $ grösser, gleichzeitig wird $T_{tot}
   $ (Latency) grösser.
   \subsubsection{Bestimmung des kritischen Pfades}
     \begin{enumerate}
@@ -116,12 +116,11 @@ Anhand der folgenden Regeln lässt sich ein sequentielles System systematisch von
       2 Durchführen.
       \item Die Länge des längsten Pfades ist $max\{Ausg"ange\}$
     \end{enumerate}
+    \includegraphics[width=0.8\textwidth]{pics/laengster_pfad}\\
+    Zykluszeit = Propagation Delay der FF + Verzögerung der Transitfunktion
+    (längster Pfad) + Setup der FF\\
     
-  \subsubsection{Längster Pfad in Mealy}
     
-  \subsubsection{Längster Pfad in Moore}
-    Propagation Delay der FF + Längster Pfad von F und G + Setup der FF
-   
 \subsection{Vermeidung von Hazards}
   Hazards sind kurzzeitige Falschaussagen in logischen Schaltungen. Sie treten
   auf durch unterschiedliche Signallaufzeiten in den einzelnen Gattern und wegen

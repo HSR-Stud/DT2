@@ -22,7 +22,7 @@ architecture TESTBENCH of BEISPIEL_TB is        -- Architecture declaration
   for all : BEISPIEL use entity work.BEISPIEL(behavioral);
   
 begin
-  BEISPIE_DUT : BEISPIEL                        -- Instanzierung des DUT
+  BEISPIEL_DUT : BEISPIEL                        -- Instanzierung des DUT
   port map (
     INPUTS => TB_stimuli,
     OUTPUTS => TB_response);
