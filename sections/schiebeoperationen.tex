@@ -46,7 +46,7 @@ Erfordert use IEEE.NUMERIC\_STD.ALL;
 	
 	\begin{multicols}{2}	
 		\begin{lstlisting}[language=vhdl,tabsize=2]
-			IMP <= sla 1;
+			MEM <= MEM sla 1;
 		\end{lstlisting}
 		
 		\textbf{Anwendung:} Division mit $2^n$ bei sign-magnitude Darstellung (SRA).
@@ -70,7 +70,7 @@ Erfordert use IEEE.NUMERIC\_STD.ALL;
 	
 	\begin{multicols}{2}	
 		\begin{lstlisting}[language=vhdl,tabsize=2]
-			IMP <= rol 1;
+			MEM <= MEM rol 1;
 		\end{lstlisting}
 		
 		\textbf{Anwendung:} Bitweise Analyse.

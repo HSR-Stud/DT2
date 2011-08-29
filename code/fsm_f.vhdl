@@ -1,4 +1,4 @@
--- INP nur bei Moore
+-- INP nur bei Mealy
 F: process(INP, PRESENT_State)
 begin
 	OUP <= '0'		-- Defaultwert
