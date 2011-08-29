@@ -9,7 +9,8 @@ architecture TESTBENCH of BEISPIEL_TB is        -- Architecture declaration
                       
   signal TB_stimuli : std_logic;                -- Testsignal declaration 
   signal TB_response : std_logic;
-
+  signal tb_clk : std_logic;
+  
   constant SIMULATIONSPERIODE : time := 400 us;  -- Constant declaration
   
   component BEISPIEL                            -- Component declaration
@@ -31,9 +32,9 @@ begin
   begin
     Clock_Loop : loop
       tb_clk <= '0';
-      wait for clk_period / 2;
+      wait for SIMULATIONSPERIODE / 2;
       tb_clk <= '1';
-      wait for clk_period / 2;
+      wait for SIMULATIONSPERIODE / 2;
     end loop Clock_Loop;
   end process;
   
