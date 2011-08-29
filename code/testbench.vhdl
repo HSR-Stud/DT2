@@ -3,14 +3,14 @@ library work;
 use ieee.std_logic_1164.ALL; 
 
 entity BEISPIEL_TB is                           -- Entity declaration
-end BEISPIEL_T                                  -- Entity hat keine Schnittstelle 
+end BEISPIEL_TB;                                  -- Entity hat keine Schnittstelle 
 
 architecture TESTBENCH of BEISPIEL_TB is        -- Architecture declaration
                       
   signal TB_stimuli : std_logic;                -- Testsignal declaration 
   signal TB_response : std_logic;
 
-  constant SIMULATIOSPERIODE : time := 400 us;  -- Constant declaration
+  constant SIMULATIONSPERIODE : time := 400 us;  -- Constant declaration
   
   component BEISPIEL                            -- Component declaration
   port (
