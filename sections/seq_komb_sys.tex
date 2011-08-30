@@ -106,16 +106,16 @@
 		\item Zustände werden der Reihe nach binär durch nummeriert.
 		\item Benötigte Anzahl Speicherstellen $k$ für eine Anzahl Zuständer $p$:\\
 		$p\leq 2^k$ | $k=\log_2(p)=\frac{\log_{10}(p)}{\log_{10}(2)}$
-		\item Anzahl Möglicher Speicherstellen:\\
+		\item Anzahl Möglicher Zustandskodierungen:\\
 		$q=\frac{(2^k)!}{(2^k-p)!}$
 		\item \textbf{Alternative:} Graycode, es wechselt nur 1 Bit\\
 	\end{itemize}
 	\end{multicols}
 	
 \subsubsection{ONE-HOT Zustandscodierung}
-	Pro Code wird genau eine Speicherstelle TURE. Alle anderen werden FALSE.
+	Pro Code wird genau eine Speicherstelle TURE. Alle anderen werden FALSE $p=k$.
 \subsubsection{ONE-COLD Zustandscodierung}
-	Pro Code wird genau eine Speicherstelle FALSE. Alle anderen werden TRUE.
+	Pro Code wird genau eine Speicherstelle FALSE. Alle anderen werden TRUE $p=q$.
 	
 \subsection{Sequentielle Systeme in VHDL}
 \lstinputlisting[language=VHDL,tabsize=2]{code/sequentiell.vhdl}
