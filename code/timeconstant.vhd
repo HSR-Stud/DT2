@@ -1,0 +1,1 @@
+constant sym_cyc: time := 100 ns;

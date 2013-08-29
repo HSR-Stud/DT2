@@ -1,0 +1,46 @@
+%Schriftgr�sse, Layout, Papierformat, Gleichungen Linksb�ndig
+\documentclass[10pt,twoside,a4paper,fleqn]{article}
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm,includeheadfoot]{geometry}
+\usepackage[latin1]{inputenc}
+\usepackage[ngerman]{babel,varioref}
+%Packages - Von LinAlg Formelsammlung kopiert! �berpr�fen ob die alle notwendig sind
+\usepackage{amsmath,amssymb,fancybox,graphicx,color,lastpage,wrapfig,fancyhdr,hyperref,verbatim}
+\usepackage{listings}
+%Package f�r Bilder im Fliesstext
+\usepackage{multicol}
+
+%Package f�r Tabelle im Querformat
+\usepackage{rotating}
+
+%Paragraphe ebenfalls nummerieren
+\setcounter{secnumdepth}{4}
+
+
+
+\raggedright
+%Titel, Autor  
+\newcommand{\titleinfo}{Zusammenfassung DT2}
+\newcommand{\versioninfo}{$Revision: 218 $ - powered by \LaTeX}
+\newcommand{\authorinfo}{G. K\"oppel, D. K\"oppel, S .K\"orner, C. Gwerder, L. Leuenberger}
+
+%Seitenstyle
+
+\pagestyle{fancy}
+\fancyhf{}
+%Kopfzeile links bzw. innen
+\fancyhead[L]{\titleinfo{ }\tiny{(\versioninfo)}}
+%Kopfzeile rechts bzw. aussen
+\fancyhead[R]{Seite \thepage { }von \pageref{LastPage}}
+%Fusszeile links bzw. innen
+\fancyfoot[L]{\footnotesize{\authorinfo}}
+%Fusszeile rechts bzw. ausen
+\fancyfoot[R]{\footnotesize{\today}}
+
+
+%Document Anfang
+\begin{document}
+
+\input{sections/realisierungs_methoden}
+\input{sections/vhdl}		
+
+\end{document}

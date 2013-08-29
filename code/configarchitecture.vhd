@@ -1,0 +1,1 @@
+  for all : <ENTITY_NAME> use entity work.<ENTITY_NAME>(<ARCH_NAME>);
