@@ -1,0 +1,78 @@
+\documentclass[10pt,a4paper,fleqn,headsepline,footsepline]{scrartcl}
+\usepackage[left=0.8cm,right=0.8cm,top=0.5cm,bottom=0.5cm,includeheadfoot]{geometry}
+
+\usepackage[UTF8]{inputenc}
+
+\usepackage[ngerman]{babel,varioref}
+%Packages - Von LinAlg Formelsammlung kopiert! �berpr�fen ob die alle notwendig sind
+\usepackage{amsmath,amssymb,fancybox,graphicx,color,lastpage,wrapfig,hyperref,verbatim}
+\usepackage{listings}
+%Package f�r Bilder im Fliesstext
+\usepackage{multicol}
+
+%Package f�r Tabelle im Querformat
+\usepackage{rotating}
+
+\usepackage{scrlayer-scrpage}
+
+\setkomafont{pageheadfoot}{\footnotesize}
+%
+%
+\RedeclareSectionCommands[
+  beforeskip=-.2\baselineskip,
+  afterskip=.1\baselineskip
+]{section,subsection,subsubsection,paragraph}
+
+
+%Paragraphe ebenfalls nummerieren
+\setcounter{secnumdepth}{4}
+
+
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.95,0.95,0.95}
+\lstset{
+backgroundcolor=\color{lbcolor},
+    tabsize=2,    
+%   rulecolor=,
+    language=[GNU]C++,
+        basicstyle=\footnotesize,        
+         %upquote=true,
+        aboveskip={0.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=false,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=single,
+        %numbers=left,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.026,0.512,0.095},
+        stringstyle=\color[rgb]{0.627,0.126,0.941},
+        numberstyle=\color[rgb]{0.205, 0.142, 0.73},
+%        \lstdefinestyle{C++}{language=C++,style=numbers}’.
+}     
+
+
+
+
+\raggedright
+
+\author{\authorinfo}
+\title{\titleinfo}
+%
+%Kopf- und Fusszeile
+%
+\lohead*{\titleinfo\quad \versioninfo}
+\chead*{}
+\rohead*{\today}
+\lofoot*{\authorinfo}
+\cfoot*{}
+\rofoot*{Seite \thepage { }von \pageref{LastPage}}
+
+
+%
+\pagestyle{scrheadings}

@@ -1,5 +1,5 @@
 \section{VHDL}
-	Die vollst"andige Beschreibung des Designs (Grundstruktur) besteht aus:\\
+	Die vollst"andige Beschreibung des Designs (Grundstruktur) besteht aus:
 	\begin{itemize}
 	\setlength{\itemsep}{0pt}
   	\setlength{\parskip}{0pt}
@@ -78,17 +78,18 @@
 		\end{tabular}
 	\end{multicols}
 	
+	\newpage
+	
 	\subsection{Architekturbeschreibung (architecture)}
-		Die Architektur legt die Funktion eines Blocks fest. Dabei kann eine Entity mehrere 				Architecturen besitzen. F"ur das Erzeugen der FPGA-Programmierung sollten aber alle 
+		Die Architektur legt die Funktion eines Blocks fest. Dabei kann eine Entity mehrere 				Architecturen besitzen. Für das Erzeugen der FPGA-Programmierung sollten aber alle 
 		nicht verwendeten Architekturen auskommentiert werden.
 		\lstinputlisting[language=VHDL,tabsize=2]{code/architecture.vhd}
 
 		\subsubsection{Signaldeklaration}
 			 Hier werden die Signale, die Innerhalb der Architektur verwendet werden, 
 			deklariert.
-			\begin{multicols}{2}
 				\lstinputlisting[language=vhdl,tabsize=2]{code/signal.vhd}
-			\end{multicols}
+			
 		\subsubsection{Komponentendeklaration}
 			Mit Hilfe des Schl"usselwortes \textbf{component} erfolgt die Deklaration von 
 			Komponenten, "ahnlich wie einer \textbf{entity}.\\
@@ -101,26 +102,28 @@
 		\subsubsection{Anweisungsteil}
 			Im Anweisungsteil wird das Verhalten beschrieben. Diese wird dabei 		
 			durch verschiedene Modelierungsstile unterschieden.
-			\paragraph{Strukturmodell (Instanzierung)} $\;$ \\
-				Die Ein- und Ausg"ange von Komponenten, die 
+			\begin{multicols}{2}
+				\paragraph{Strukturmodell (Instanzierung)}
+				Die Ein- und Ausgänge von Komponenten, die 
 				in einer Bibliothek abgelegt sind werden durch lokale Signale miteinenander 
 				verbunden $\rightarrow$ Es entsteht eine Netzliste. 
-				\begin{multicols}{2}
-					\lstinputlisting[language=vhdl,tabsize=2]{code/instanzierung.vhd}
-				\end{multicols}
-			\paragraph{Datenflussmodell} $\;$ \\
+				\lstinputlisting[language=vhdl,tabsize=2]{code/instanzierung.vhd}
+			
+			
+			\paragraph{Datenflussmodell}
 				Es werden logische Grundfunktionen verwendet.
-				Logikoperatoren f"ur bit, bit\_vetor, boolean: \textbf{not, and, or, nand, nor,
+				Logikoperatoren f"ur bit, bit\_vector, boolean: \textbf{not, and, or, nand, nor,
  				xor, xnor	} Wenn auf bit\_vector angewendet, dann muss Bitbreite von 
 				beiden Operanden gleich sein.
-				\begin{multicols}{2}
+
 					\lstinputlisting[language=vhdl,tabsize=2]{code/datenfluss.vhd}
-				\end{multicols}
-			\paragraph{Verhaltensmodell} ($\rightarrow$ H"aufigster Modellierungsstil.) \\
+					
+			\end{multicols}
+			\paragraph{Verhaltensmodell} ($\rightarrow$ H"aufigster Modellierungsstil.) 
 				Die Modellierung findet durch Sprachelemente "ahnlich wie in einer 	
 				prozeduralen Programmiersprache statt.\\
 				Dabei werden abgeschlossene Hardware-Bl"ocke durch Prozesse 
-				abgebildet\\
+				abgebildet
 				
 
 	\subsection{Signalzuweisung}

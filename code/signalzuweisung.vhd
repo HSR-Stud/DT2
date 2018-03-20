@@ -1,12 +1,13 @@
 -- Zuweisungsoperator <=
--- type: bit
+architecture behavioral of ... is
+begin
 Y <= X;
 A <= '0';
 -- type: bit_vector
 Q <= "1010";
 -- logische Ausdruecke
 C <= D and E;
-
+end behavioral
 
 --Selektive Signalzuweisung
 architecture SELEKTIV of ... is
